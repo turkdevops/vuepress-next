@@ -1,4 +1,4 @@
-# Config Reference
+# Config
 
 ## Site Config
 
@@ -85,7 +85,7 @@
   
   You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`.
 
-  This can be specified in different locales. 
+  This can be specified in different locales.
 
 - Example:
 
@@ -137,16 +137,26 @@
 
 - Type: `string`
 
-- Default: `'@vuepress/theme-default'`
+- Default: `'@vuepress/default'`
 
 - Details:
 
-  Name of theme your want to use.
+  Name or absolute path of theme your want to use.
 
-  Theme name shorthand is acceptable.
+  This option accepts theme name, theme name shorthand, or absolute path to theme.
+
+- Example:
+
+  ```js
+  module.exports = {
+    theme: 'vuepress-theme-foo',
+    theme: 'bar',
+    theme: '/path/to/local/theme',
+  }
+  ```
 
 - Also see:
-  - [Guide > Using Theme](../guide/theme.md)
+  - [Guide > Theme](../guide/theme.md)
 
 ### themeConfig
 
@@ -160,6 +170,33 @@
 
 - Also see:
   - [Default Theme > Config](./default-theme/config.md)
+
+## Bundler Config
+
+### bundler
+
+- Type: `string`
+
+- Default: `'@vuepress/webpack'`
+
+- Details:
+
+  Name of bundler your want to use.
+
+  Bundler name shorthand is acceptable.
+
+- Also see:
+  - [Guide > Bundler](../guide/bundler.md)
+
+### bundlerConfig
+
+- Type: `BundlerConfig`
+
+- Default: `{}`
+
+- Details:
+
+  Provide config options to the used bundler. The options will vary depending on the bundler you are using.
 
 ## Directory Config
 
@@ -381,7 +418,7 @@ You should not configure it unless you understand what it is for.
   Set to `false` to disable this plugin.
 
 - Also see:
-  - [Advanced > Markdown and Vue SFC](../advanced/markdown.md)
+  - [Advanced > Markdown and Vue SFC](../guide/advanced/markdown.md)
 
 #### markdown.links
 
@@ -519,8 +556,8 @@ You should not configure it unless you understand what it is for.
 
   If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
 
-## Plugin Hooks
+## Plugin API
 
-User config file also works as a VuePress plugin, so all hooks of Plugin API are available.
+User config file also works as a VuePress plugin, so all of the Plugin APIs are available except the `name` and `multiple` options.
 
-Please check out [Plugin API Reference](./plugin-api.md) for a full list of hooks.
+Please check out [Plugin API Reference](./plugin-api.md) for a full list of Plugin APIs.

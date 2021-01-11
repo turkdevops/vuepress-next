@@ -8,7 +8,7 @@ The Markdown content in VuePress will be parsed by [markdown-it](https://github.
 
 This section will introduce built-in Markdown syntax extensions of VuePress.
 
-You can also configure those built-in extensions, load more markdown-it plugins and implement your own extensions via [markdown](../reference/config.md#markdown) option and [extendsMarkdown](../reference/config.md#extendsmarkdown) option.
+You can also configure those built-in extensions, load more markdown-it plugins and implement your own extensions via [markdown](../reference/config.md#markdown) option and [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) option.
 
 ### Embedded
 
@@ -320,7 +320,7 @@ Config reference: [markdown.code.vPre](../reference/config.md#markdown-vpre)
 
 This section will introduce some basic usage of Vue in Markdown.
 
-Check out [Advanced > Markdown and Vue SFC](../advanced/markdown.md) for more details.
+Check out [Advanced > Markdown and Vue SFC](./advanced/markdown.md) for more details.
 
 ### Template Syntax
 

@@ -1,4 +1,4 @@
-# 配置参考
+# 配置
 
 ## 站点配置
 
@@ -136,16 +136,26 @@
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/theme-default'`
+- 默认值： `'@vuepress/default'`
 
 - 详情：
 
-  你想要使用的主题的名称。
+  你想要使用的主题的名称或绝对路径。
 
-  可以使用主题名称的简称。
+  这个选项可以接收主题名称、主题简称或主题的绝对路径。
+
+- 示例：
+
+  ```js
+  module.exports = {
+    theme: 'vuepress-theme-foo',
+    theme: 'bar',
+    theme: '/path/to/local/theme',
+  }
+  ```
 
 - 参考：
-  - [指南 > 使用主题](../guide/theme.md)
+  - [指南 > 主题](../guide/theme.md)
 
 ### themeConfig
 
@@ -159,6 +169,33 @@
 
 - 参考：
   - [默认主题 > 配置](./default-theme/config.md)
+
+## 打包工具配置
+
+### bundler
+
+- 类型： `string`
+
+- 默认值： `'@vuepress/webpack'`
+
+- 详情：
+
+  你想要使用的打包工具的名称。
+
+  可以使用打包工具名称的简称。
+
+- 参考：
+  - [指南 > 打包工具](../guide/bundler.md)
+
+### bundlerConfig
+
+- 类型： `BundlerConfig`
+
+- 默认值： `{}`
+
+- 详情：
+
+  为当前使用的打包工具提供的配置项。具体的配置项取决于你使用的打包工具。
 
 ## 目录配置
 
@@ -380,7 +417,7 @@
   设置为 `false` 可以禁用该插件。
 
 - 参考：
-  - [深入 > Markdown 与 Vue SFC](../advanced/markdown.md)
+  - [深入 > Markdown 与 Vue SFC](../guide/advanced/markdown.md)
 
 #### markdown.links
 
@@ -518,8 +555,8 @@
 
   如果你将它设置为 `true` ，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
 
-## 插件 Hooks
+## 插件 API
 
-用户配置文件同样可以作为一个 VuePress 插件，所以插件 API 的所有 Hooks 都可以在配置文件中使用。
+用户配置文件同样可以作为一个 VuePress 插件，所以除了 `name` 和 `multiple` 配置项以外的所有插件 API 都可以在配置文件中使用。
 
-前往 [插件 API 参考](./plugin-api.md) 查看所有 Hooks 。
+前往 [插件 API 参考](./plugin-api.md) 查看所有插件 API 。

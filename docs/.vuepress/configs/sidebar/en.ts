@@ -13,9 +13,21 @@ export const en: SidebarConfig = {
         '/guide/markdown.md',
         '/guide/assets.md',
         '/guide/i18n.md',
+        '/guide/deployment.md',
         '/guide/theme.md',
         '/guide/plugin.md',
-        '/guide/deployment.md',
+        '/guide/bundler.md',
+      ],
+    },
+  ],
+  '/guide/advanced/': [
+    {
+      isGroup: true,
+      text: 'Advanced',
+      children: [
+        '/guide/advanced/markdown.md',
+        '/guide/advanced/theme.md',
+        '/guide/advanced/plugin.md',
       ],
     },
   ],
@@ -29,7 +41,15 @@ export const en: SidebarConfig = {
         '/reference/frontmatter.md',
         '/reference/components.md',
         '/reference/plugin-api.md',
+        '/reference/theme-api.md',
       ],
+    },
+  ],
+  '/reference/bundler/': [
+    {
+      isGroup: true,
+      text: 'Bundler Reference',
+      children: ['/reference/bundler/webpack.md', '/reference/bundler/vite.md'],
     },
   ],
   '/reference/default-theme/': [
@@ -41,13 +61,6 @@ export const en: SidebarConfig = {
         '/reference/default-theme/frontmatter.md',
         '/reference/default-theme/components.md',
       ],
-    },
-  ],
-  '/advanced/': [
-    {
-      isGroup: true,
-      text: 'Advanced',
-      children: ['/advanced/markdown.md'],
     },
   ],
 }
