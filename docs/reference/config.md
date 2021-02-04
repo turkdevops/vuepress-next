@@ -1,5 +1,16 @@
 # Config
 
+Reference of VuePress config, which can be set via config file. The conventional config files are (in order of precedence):
+
+- In current working directory `cwd`:
+  - `vuepress.config.ts`
+  - `vuepress.config.js`
+- In source directory `sourceDir`:
+  - `.vuepress/config.ts`
+  - `.vuepress/config.js`
+
+You can also specify the config file via `--config` option of [CLI](./cli.md).
+
 ## Site Config
 
 ### base
@@ -82,7 +93,7 @@
 - Details:
 
   Extra tags to inject into the `<head>` tag in the rendered HTML.
-  
+
   You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`.
 
   This can be specified in different locales.
@@ -91,21 +102,19 @@
 
   To add a custom favicon:
 
-  ```js
-  module.exports = {
-    head: [
-      ['link', { rel: 'icon', href: '/logo.png' }]
-    ]
-  }
-  ```
+```js
+module.exports = {
+  head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
+}
+```
 
-  Rendered as：
+Rendered as：
 
-  ```html
-  <head>
-    <link rel="icon" href="/logo.png" />
-  </head>
-  ```
+```html
+<head>
+  <link rel="icon" href="/images/logo.png" />
+</head>
+```
 
 - Also see:
   - [Config > locales](#locales)
@@ -147,13 +156,13 @@
 
 - Example:
 
-  ```js
-  module.exports = {
-    theme: 'vuepress-theme-foo',
-    theme: 'bar',
-    theme: '/path/to/local/theme',
-  }
-  ```
+```js
+module.exports = {
+  theme: 'vuepress-theme-foo',
+  theme: 'bar',
+  theme: '/path/to/local/theme',
+}
+```
 
 - Also see:
   - [Guide > Theme](../guide/theme.md)
@@ -281,7 +290,7 @@
 
   Set to `false` to disable this plugin.
 
-:::danger
+::: danger
 You should not configure it unless you understand what it is for.
 :::
 
@@ -376,7 +385,7 @@ You should not configure it unless you understand what it is for.
 
   Set to `false` to disable this plugin.
 
-:::danger
+::: danger
 You should not configure it unless you understand what it is for.
 :::
 

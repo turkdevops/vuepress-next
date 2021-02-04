@@ -30,7 +30,7 @@ Take the `docs` directory as your [sourceDir](../reference/cli.md), e.g. your ar
 
 A markdown file could contain a [YAML](https://yaml.org/) frontmatter. The frontmatter must be at the top of the Markdown file and must be wrapped with a couple of triple-dashed lines. Here is a basic example:
 
-```yaml
+```md
 ---
 lang: en-US
 title: Title of this page
@@ -42,7 +42,7 @@ You must have noticed that those fields are similar with the [Site Config](./con
 
 Also, VuePress has built-in support for some frontmatter fields, and your theme may have its own special frontmatter, too.
 
-:::tip
+::: tip
 Check out the [Frontmatter Reference](../reference/frontmatter.md) for a full list of VuePress built-in frontmatter.
 
 Check out the [Default Theme > Frontmatter Reference](../reference/default-theme/frontmatter.md) for the frontmatter of default theme.

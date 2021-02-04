@@ -20,10 +20,12 @@ export const en: NavbarConfig = [
           '/reference/components.md',
           '/reference/plugin-api.md',
           '/reference/theme-api.md',
+          '/reference/client-api.md',
+          '/reference/node-api.md',
         ],
       },
       {
-        text: 'Bundler',
+        text: 'Bundlers',
         children: [
           '/reference/bundler/webpack.md',
           '/reference/bundler/vite.md',
@@ -35,7 +37,13 @@ export const en: NavbarConfig = [
           '/reference/default-theme/config.md',
           '/reference/default-theme/frontmatter.md',
           '/reference/default-theme/components.md',
+          '/reference/default-theme/markdown.md',
         ],
+      },
+      {
+        text: 'Official Plugins',
+        link: '/reference/plugin/',
+        children: [],
       },
     ],
   },

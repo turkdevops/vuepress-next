@@ -1,13 +1,53 @@
+import * as chokidar from 'chokidar'
 import type { UserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
+import { chalk, logger } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 
 const config: UserConfig<DefaultThemeOptions> = {
   base: '/',
 
-  evergreen: process.env.NODE_ENV !== 'production',
-
-  head: [['link', { rel: 'icon', href: `/logo.png` }]],
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: `/images/icons/favicon-16x16.png`,
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: `/images/icons/favicon-32x32.png`,
+      },
+    ],
+    ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+    ['meta', { name: 'application-name', content: 'VuePress' }],
+    ['meta', { name: 'apple-mobile-web-app-title', content: 'VuePress' }],
+    [
+      'meta',
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+    ],
+    [
+      'link',
+      { rel: 'apple-touch-icon', href: `/images/icons/apple-touch-icon.png` },
+    ],
+    [
+      'link',
+      {
+        rel: 'mask-icon',
+        href: '/images/icons/safari-pinned-tab.svg',
+        color: '#3eaf7c',
+      },
+    ],
+    ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+  ],
 
   // site-level locales config
   locales: {
@@ -24,11 +64,10 @@ const config: UserConfig<DefaultThemeOptions> = {
   },
 
   themeConfig: {
-    logo: '/hero.png',
+    logo: '/images/hero.png',
 
     repo: 'vuepress/vuepress-next',
 
-    docsBranch: 'main',
     docsDir: 'docs',
 
     // theme-level locales config
@@ -68,7 +107,7 @@ const config: UserConfig<DefaultThemeOptions> = {
         lastUpdatedText: '上次更新',
         contributorsText: '贡献者',
 
-        // custom blocks
+        // custom containers
         tip: '提示',
         warning: '注意',
         danger: '警告',
@@ -86,16 +125,23 @@ const config: UserConfig<DefaultThemeOptions> = {
         openInNewWindow: '在新窗口打开',
       },
     },
+
+    themePlugins: {
+      // only enable git plugin in production mode
+      git: process.env.NODE_ENV === 'production',
+    },
   },
 
   plugins: [
+    ['@vuepress/plugin-debug'],
     [
       '@vuepress/plugin-docsearch',
       {
-        // TODO: create algolia index for vuepress-next
-        // apiKey: '',
-        // appId: '',
-        // indexName: '',
+        apiKey: '3a539aab83105f01761a137c61004d85',
+        indexName: 'vuepress',
+        searchParameters: {
+          facetFilters: ['tags:v2'],
+        },
         locales: {
           '/zh/': {
             placeholder: '搜索文档',
@@ -116,6 +162,20 @@ const config: UserConfig<DefaultThemeOptions> = {
       },
     ],
   ],
+
+  evergreen: process.env.NODE_ENV !== 'production',
+
+  onWatched: (_, restart) => {
+    const watcher = chokidar.watch('configs/**/*.ts', {
+      cwd: __dirname,
+      ignoreInitial: true,
+    })
+    watcher.on('change', async (file) => {
+      logger.info(`file ${chalk.magenta(file)} is modified`)
+      await watcher.close()
+      await restart()
+    })
+  },
 }
 
 export = config

@@ -4,7 +4,7 @@ VuePress CLI is provided by [@vuepress/cli](https://www.npmjs.com/package/@vuepr
 
 Run `vuepress --help` to get following help messages:
 
-```sh
+```bash
 Usage:
   $ vuepress <command> [options]
 
@@ -27,7 +27,7 @@ Options:
 
 Start a development server to develop your VuePress site locally.
 
-```sh
+```bash
 Usage:
   $ vuepress dev [sourceDir]
 
@@ -37,7 +37,8 @@ Options:
   -t, --temp <temp>      Set the directory of the temporary files 
   --host <host>          Use specified host (default: 0.0.0.0) 
   --cache <cache>        Set the directory of the cache files 
-  --clean-cache          Clean the cache before dev 
+  --clean-temp           Clean the temporary files before dev 
+  --clean-cache          Clean the cache files before dev 
   --open                 Open browser when ready 
   --debug                Enable debug mode 
   --no-watch             Disable watching page and config files (default: true)
@@ -45,7 +46,7 @@ Options:
   -h, --help             Display this message
 ```
 
-:::tip
+::: tip
 Options set by CLI will override those options with the same name in your config file.
 :::
 
@@ -53,7 +54,7 @@ Options set by CLI will override those options with the same name in your config
 
 Build your VuePress site to static files, which are ready for [deployment](../guide/deployment.md).
 
-```sh
+```bash
 Usage:
   $ vuepress build [sourceDir]
 
@@ -62,13 +63,14 @@ Options:
   -d, --dest <dest>      Set the directory build output (default: .vuepress/dist) 
   -t, --temp <temp>      Set the directory of the temporary files 
   --cache <cache>        Set the directory of the cache files 
-  --clean-cache          Clean the cache before build 
+  --clean-temp           Clean the temporary files before build 
+  --clean-cache          Clean the cache files before build 
   --debug                Enable debug mode 
   -v, --version          Display version number 
   -h, --help             Display this message
 ```
 
-:::tip
+::: tip
 Options set by CLI will override those options with the same name in your config file.
 :::
 

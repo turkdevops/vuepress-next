@@ -4,6 +4,7 @@ import * as WebpackDevServer from 'webpack-dev-server'
 import { App } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 import type { WebpackBundlerOptions } from '../types'
+import { trailingSlashMiddleware } from './trailingSlashMiddleware'
 
 export const createDevServerConfig = (
   app: App,
@@ -15,6 +16,7 @@ export const createDevServerConfig = (
     dev: {
       publicPath: app.options.base,
       writeToDisk: false,
+      stats: app.env.isDebug ? 'normal' : 'errors-warnings',
     },
     firewall: false,
     headers: {
@@ -31,6 +33,10 @@ export const createDevServerConfig = (
       options.afterDevServer?.(expressApp, server)
     },
     onBeforeSetupMiddleware: (expressApp, server) => {
+      // use trailing slash middleware to support vuepress routing in dev-server
+      // it will be handled by most of the deployment platforms
+      expressApp.use(trailingSlashMiddleware)
+
       // plugin hook: beforeDevServer
       options.beforeDevServer?.(expressApp, server)
     },

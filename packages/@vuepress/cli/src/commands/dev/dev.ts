@@ -1,4 +1,5 @@
 import * as chokidar from 'chokidar'
+import type { FSWatcher } from 'chokidar'
 import { createApp } from '@vuepress/core'
 import { chalk, debug, fs, logger } from '@vuepress/utils'
 import {
@@ -47,7 +48,11 @@ export const dev = async (
   // use user-config plugin
   app.use(transformUserConfigToPlugin(app, userConfig))
 
-  // clean cache
+  // clean temp and cache
+  if (commandOptions.cleanTemp === true) {
+    logger.info('Cleaning temp...')
+    await fs.remove(app.dir.temp())
+  }
   if (commandOptions.cleanCache === true) {
     logger.info('Cleaning cache...')
     await fs.remove(app.dir.cache())
@@ -66,29 +71,40 @@ export const dev = async (
     return
   }
 
+  // all watchers
+  const watchers: FSWatcher[] = []
+
+  // restart dev command
+  const restart = async (): Promise<void> => {
+    await Promise.all([
+      // close all watchers
+      ...watchers.map((item) => item.close()),
+      // close current dev server
+      close(),
+    ])
+    // restart dev command
+    await dev(sourceDir, commandOptions)
+    logger.tip(`dev server has restarted, please refresh your browser`)
+  }
+
   // watch page files
   const pagesWatcher = chokidar.watch(app.options.pagePatterns, {
     cwd: app.dir.source(),
     ignoreInitial: true,
   })
-
-  // handle page add event
   pagesWatcher.on('add', (filePathRelative) => {
     logger.info(`page ${chalk.magenta(filePathRelative)} is created`)
     handlePageAdd(app, app.dir.source(filePathRelative))
   })
-
-  // handle page change event
   pagesWatcher.on('change', (filePathRelative) => {
     logger.info(`page ${chalk.magenta(filePathRelative)} is modified`)
     handlePageChange(app, app.dir.source(filePathRelative))
   })
-
-  // handle page unlink event
   pagesWatcher.on('unlink', (filePathRelative) => {
     logger.info(`page ${chalk.magenta(filePathRelative)} is removed`)
     handlePageUnlink(app, app.dir.source(filePathRelative))
   })
+  watchers.push(pagesWatcher)
 
   // watch user config file
   if (userConfigPath) {
@@ -96,18 +112,12 @@ export const dev = async (
       cwd: process.cwd(),
       ignoreInitial: true,
     })
-    configWatcher.on('change', async (configFile) => {
+    configWatcher.on('change', (configFile) => {
       logger.info(`config ${chalk.magenta(configFile)} is modified`)
-      await Promise.all([
-        // close file watchers
-        pagesWatcher.close(),
-        configWatcher.close(),
-        // close current dev server
-        close(),
-      ])
-      // re-run dev command
-      await dev(sourceDir, commandOptions)
-      logger.tip(`dev server has restarted, please refresh your browser`)
+      restart()
     })
+    watchers.push(configWatcher)
   }
+
+  await app.pluginApi.hooks.onWatched.process(app, restart)
 }

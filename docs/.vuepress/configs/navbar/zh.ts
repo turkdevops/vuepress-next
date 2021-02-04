@@ -17,6 +17,8 @@ export const zh: NavbarConfig = [
           '/zh/reference/components.md',
           '/zh/reference/plugin-api.md',
           '/zh/reference/theme-api.md',
+          '/zh/reference/client-api.md',
+          '/zh/reference/node-api.md',
         ],
       },
       {
@@ -32,7 +34,13 @@ export const zh: NavbarConfig = [
           '/zh/reference/default-theme/config.md',
           '/zh/reference/default-theme/frontmatter.md',
           '/zh/reference/default-theme/components.md',
+          '/zh/reference/default-theme/markdown.md',
         ],
+      },
+      {
+        text: '官方插件',
+        link: '/zh/reference/plugin/',
+        children: [],
       },
     ],
   },

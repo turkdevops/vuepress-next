@@ -19,11 +19,6 @@ export interface DefaultThemeOptions
     backToTop?: boolean
 
     /**
-     * Enable @vuepress/plugin-debug or not
-     */
-    debug?: boolean
-
-    /**
      * Enable @vuepress/plugin-container or not
      */
     container?: {
@@ -31,6 +26,8 @@ export interface DefaultThemeOptions
       warning?: boolean
       danger?: boolean
       details?: boolean
+      codeGroup?: boolean
+      codeGroupItem?: boolean
     }
 
     /**

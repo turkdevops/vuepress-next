@@ -1,5 +1,16 @@
 # 配置
 
+VuePress 配置的参考文档，可以通过配置文件来设置这些配置。 VuePress 约定的配置文件为（按照优先顺序）：
+
+- 当前工作目录 `cwd` 下：
+  - `vuepress.config.ts`
+  - `vuepress.config.js`
+- 源文件目录 `sourceDir` 下：
+  - `.vuepress/config.ts`
+  - `.vuepress/config.js`
+
+你也可以通过 [命令行接口](./cli.md) 的 `--config` 选项来指定配置文件。
+
 ## 站点配置
 
 ### base
@@ -81,7 +92,7 @@
 - 详情：
 
   在最终渲染出的 HTML 的 `<head>` 标签内加入的额外标签。
-  
+
   你可以通过 `[tagName, { attrName: attrValue }, innerHTML?]` 的格式来添加标签。
 
   它可以设置在不同语言的 locales 中。
@@ -90,21 +101,19 @@
 
   增加一个自定义的 favicon ：
 
-  ```js
-  module.exports = {
-    head: [
-      ['link', { rel: 'icon', href: '/logo.png' }]
-    ]
-  }
-  ```
+```js
+module.exports = {
+  head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
+}
+```
 
-  渲染为：
+渲染为：
 
-  ```html
-  <head>
-    <link rel="icon" href="/logo.png" />
-  </head>
-  ```
+```html
+<head>
+  <link rel="icon" href="/images/logo.png" />
+</head>
+```
 
 - 参考：
   - [配置 > locales](#locales)
@@ -146,13 +155,13 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    theme: 'vuepress-theme-foo',
-    theme: 'bar',
-    theme: '/path/to/local/theme',
-  }
-  ```
+```js
+module.exports = {
+  theme: 'vuepress-theme-foo',
+  theme: 'bar',
+  theme: '/path/to/local/theme',
+}
+```
 
 - 参考：
   - [指南 > 主题](../guide/theme.md)
@@ -280,7 +289,7 @@
 
   设置为 `false` 可以禁用该插件。
 
-:::danger
+::: danger
 除非你了解它的用途，否则你不应该设置该配置项。
 :::
 
@@ -375,7 +384,7 @@
 
   设置为 `false` 可以禁用该插件。
 
-:::danger
+::: danger
 除非你了解它的用途，否则你不应该设置该配置项。
 :::
 
@@ -539,7 +548,7 @@
 
 - 详情：
 
-  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="preload">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。 
+  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="preload">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
 
   默认情况下，只有当前页面所需的文件会被预加载。所以在绝大部分情况下，你只需要使用 `true` 就可以了。
 
@@ -551,7 +560,7 @@
 
 - 详情：
 
-  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="prefetch">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。 
+  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="prefetch">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
 
   如果你将它设置为 `true` ，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
 

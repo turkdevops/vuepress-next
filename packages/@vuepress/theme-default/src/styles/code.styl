@@ -102,7 +102,7 @@ div[class*='language-'] {
     }
 
     pre {
-      margin-left: $lineNumbersWrapperWidth rem;
+      margin-left: $lineNumbersWrapperWidth;
       padding-left: 1rem;
       vertical-align: middle;
     }
@@ -146,6 +146,16 @@ for lang in $codeLang {
   div[class*='language-'].ext-{lang} {
     &:before {
       content: '' + lang;
+    }
+  }
+}
+
+// narrow mobile
+@media (max-width: $MQMobileNarrow) {
+  {$contentClass} {
+    div[class*='language-'] {
+      margin: 0.85rem -1.5rem;
+      border-radius: 0;
     }
   }
 }

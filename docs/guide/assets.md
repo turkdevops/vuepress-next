@@ -24,13 +24,14 @@ It would be useful in some cases:
 
 Take our documentation source files as an example, we are putting the logo of VuePress inside the public directory:
 
-```sh
+```bash
 └─ docs
    ├─ .vuepress
    |  └─ public
-   |     └─ hero.png  # <- Logo file
+   |     └─ images
+   |        └─ hero.png  # <- Logo file
    └─ guide
-      └─ assets.md    # <- Here we are
+      └─ assets.md       # <- Here we are
 ```
 
 We can reference our logo in current page like this:
@@ -38,14 +39,14 @@ We can reference our logo in current page like this:
 **Input**
 
 ```md
-![VuePress Logo](/hero.png)
+![VuePress Logo](/images/hero.png)
 ```
 
 **Output**
 
-![VuePress Logo](/hero.png)
+![VuePress Logo](/images/hero.png)
 
-:::tip
+::: tip
 Config reference: [public](../reference/config.md#public)
 :::
 
@@ -56,7 +57,7 @@ If your site is deployed to a non-root URL, i.e. the [base](../reference/config.
 For example, if you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `"/bar/"`, and you have to reference your public files in Markdown like this:
 
 ```md
-![VuePress Logo](/bar/hero.png)
+![VuePress Logo](/bar/images/hero.png)
 ```
 
 Obviously, it is brittle if you ever decide to change the `base`. This is the reason why we suggest to reference static assets using relative URLs.
@@ -64,12 +65,12 @@ Obviously, it is brittle if you ever decide to change the `base`. This is the re
 To help with that, VuePress provides a built-in helper `$withBase` that generates the correct path:
 
 ```md
-<img :src="$withBase('/hero.png')" alt="VuePress Logo">
+<img :src="$withBase('/images/hero.png')" alt="VuePress Logo">
 ```
 
 The helper is verbose in Markdown. So it might be more helpful for theme and plugin authors.
 
-:::tip
+::: tip
 Config reference: [base](../reference/config.md#base)
 :::
 
@@ -77,7 +78,7 @@ Config reference: [base](../reference/config.md#base)
 
 Although it is not a common usage, you can reference images from dependent packages:
 
-```sh
+```bash
 npm install -D package-name
 ```
 
@@ -99,6 +100,6 @@ module.exports = {
 ![Image from path alias](@alias/image.png)
 ```
 
-:::tip
+::: tip
 Config reference: [alias](../reference/config.md#alias)
 :::

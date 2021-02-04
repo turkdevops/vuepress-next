@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.18...v2.0.0-alpha.19) (2021-01-24)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+
+
+
+
+# [2.0.0-alpha.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2021-01-17)
+
+
+### Bug Fixes
+
+* **theme-default:** fix homepage frontmatter type ([9cf2d28](https://github.com/vuepress/vuepress-next/commit/9cf2d288e115d335f6ff9f1a849a2ce82db799c9))
+* **theme-default:** fix sidebar config override ([2c2c280](https://github.com/vuepress/vuepress-next/commit/2c2c2801be716dfb102345090888fd1e22a0ac92))
+* **theme-default:** make sr-only tags unselectable ([0f6488e](https://github.com/vuepress/vuepress-next/commit/0f6488e3a00674c0670737c8831763db0a0ffa93))
+
+
+### Features
+
+* **theme-default:** add code-group custom container ([d0a20aa](https://github.com/vuepress/vuepress-next/commit/d0a20aaacefc78708a4181c53704b28c60b520b4))
+* **theme-default:** add page transition ([845cc2c](https://github.com/vuepress/vuepress-next/commit/845cc2cb64223b856261bfc7b384dec6557456c4))
+* **theme-default:** allow html in homepage footer ([87e0821](https://github.com/vuepress/vuepress-next/commit/87e0821cee66c34141c1c3a62e8f5ecb6b21a957))
+* **theme-default:** optimize scrollbar style of sidebar ([27abb26](https://github.com/vuepress/vuepress-next/commit/27abb26509fa737ea27c3036bbe834d544e60298))
+* **theme-default:** support multiple action buttons in homepage (close [#23](https://github.com/vuepress/vuepress-next/issues/23)) ([bb44710](https://github.com/vuepress/vuepress-next/commit/bb44710624d2dbb65bd5f3da2eafabdec73ecadf))
+
+
+
+
+
+# [2.0.0-alpha.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2021-01-13)
+
+
+### Features
+
+* **theme-default:** allow dropdown subtitle as a link ([5fb6558](https://github.com/vuepress/vuepress-next/commit/5fb6558c926ddbb569f2b1901903cf9be4ad426e))
+
+
+
+
+
 # [2.0.0-alpha.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2021-01-11)
 
 **Note:** Version bump only for package @vuepress/theme-default
@@ -178,7 +219,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **theme-default:** migrate styles ([4bb6e10](https://github.com/vuepress/vuepress-next/commit/4bb6e10da8b71849edf45bd11c282777e840b618))
 * **theme-default:** navbar and sidebar ([7f22ac0](https://github.com/vuepress/vuepress-next/commit/7f22ac032c17be8dafe1226d31da4019c17237d5))
 * **theme-default:** optimize sidebar items config ([f70cdf0](https://github.com/vuepress/vuepress-next/commit/f70cdf06741bd283722fb51170e407492e9b1a6c))
-* **theme-default:** support locale config for custom blocks ([404e02d](https://github.com/vuepress/vuepress-next/commit/404e02dadda526b88dfca0f36df8fbf18d3d5e28))
+* **theme-default:** support locale config for custom containers ([404e02d](https://github.com/vuepress/vuepress-next/commit/404e02dadda526b88dfca0f36df8fbf18d3d5e28))
 * **theme-default:** use active-header-links plugin ([f7990a2](https://github.com/vuepress/vuepress-next/commit/f7990a2e752af6989cebb58818e3f6c86951255e))
 * **theme-default:** use container plugin and refactor types ([55e0940](https://github.com/vuepress/vuepress-next/commit/55e0940a6606fa64742faaf14722ebfaafb39321))
 * **theme-default:** use Debug component in Layout ([fe4334f](https://github.com/vuepress/vuepress-next/commit/fe4334f863d4d48e1a37ef96d684a168a9eff996))
