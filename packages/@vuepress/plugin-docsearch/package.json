@@ -30,7 +30,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@docsearch/css": "3.0.0-alpha.31",
+    "@docsearch/css": "3.3.0",
     "@docsearch/js": "3.0.0-alpha.31",
     "@types/react": "^17.0.0",
     "@vuepress/client": "2.0.0-alpha.19",
